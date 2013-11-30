@@ -1,0 +1,290 @@
+<html>
+	<head>
+		<!-- <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+		<meta http-equiv="refresh" content="28800">
+		<meta HTTP-EQUIV="Expires" CONTENT="-1"> -->
+		<script src="AIRAliases.js" type="text/javascript"></script>
+		<link rel="stylesheet" type="text/css" href="./lib/js/extjs/resources/css/ext-all.css" ext:query="true" />
+		<!--<link rel="stylesheet" type="text/css" href="/lib/js/extair/resources/css/ext-air.css" ext:query="true" />-->
+		<link rel="stylesheet" type="text/css" href="./lib/js/extjs/resources/css/xtheme-gray.css"> 
+		<!--<link rel="stylesheet" type="text/css" href="/lib/js/prettify/resources/css/prettify.css" ext:query="true" />-->
+		<!--<script type="text/javascript" src="/lib/js/prettify/prettify.js" ext:query="true"></script>-->
+		<!-- <script type="text/javascript" language="javascript" src="/lib/js/jquery-1.2.6.min.js"></script>-->
+		
+		 
+<!--		<script type="text/javascript" src="/lib/js/extjs/adapter/ext/ext-base-debug.js"></script>
+		<script type="text/javascript" src="/lib/js/extjs/ext-all-debug.js"></script>
+		<script type="text/javascript" src="/lib/js/extair/ext-air-wo-xlayer-debug.js"></script>
+		<script type="text/javascript" src="/lib/air/AIRIntrospector.js" ext:query="true"></script>
+		<script type="text/javascript" src="/lib/air/AIRAliases.js" ext:query="true"></script>
+		<script type="text/javascript" src="/lib/air/AIRIntrospector.js" ext:query="true"></script>
+		Debug Versions -->
+		 
+		 <!-- Version Final
+		 <script type="text/javascript" src="/lib/air/AIRIntrospector.js" ext:query="true"></script>
+		 <script type="text/javascript" src="/lib/air/AIRAliases.js" ext:query="true"></script>
+-->
+		<script type="text/javascript" src="./lib/js/extjs/adapter/ext/ext-base.js" ext:query="true"></script>
+		<script type="text/javascript" src="./lib/js/extjs/ext-all.js"></script>
+	<!--	<script type="text/javascript" src="./lib/js/extair/ext-air-wo-xlayer.js" ext:query="true"></script>-->
+		
+		<script type="text/javascript" src="./lib/js/config.js" ext:query="true"></script>
+		<script type="text/javascript" src="./lib/js/comunes/espanol.js" ext:query="true"></script>
+		<script type="text/javascript" src="./lib/js/comunes/etiquetas.js" ext:query="true"></script>
+		<script type="text/javascript" src="./lib/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="./lib/js/player/jquery.jplayer.min.js"></script>
+		<script type="text/javascript" src="./lib/js/player/jplayer.playlist.min.js"></script>
+		<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+	var listVideos = new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_1",
+		//cssSelectorAncestor: "#jp_container_1"
+	}, [
+		
+	],
+	{
+		playListOptions : {
+			autoPlay : true
+		},
+		swfPath: "lib/js/player",
+		supplied: "ogv",
+		loop:true,
+		size: {
+			width: "100%",
+			height: "100%",
+			cssClass: "jp-video-360p"
+		},
+		smoothPlayBar: false,
+		keyEnabled: false
+	});
+	$.ajax({
+		  url: "./recursos/videos/",
+		  async : false,
+		  success: function(data){
+		     $(data).find("a:contains(.ogg)").each(function(){
+		        // will loop through 
+		        var video = $(this).attr("href");	
+		        console.log(video);
+		        listVideos.add({
+					ogv: "./recursos/videos/"+video
+				});
+		        console.log("./recursos/videos/"+video);
+		     });
+		     listVideos.play(0);
+			}
+	});
+	
+	
+});
+//]]>
+</script>
+
+		
+		<style>
+			#jquery_jplayer_1{
+				margin-left: 25px;
+			}
+			#message_box { 
+				       position: absolute; 
+				       top: 0; left: 0; 
+				       z-index: 10; 
+					   background:#ffc;
+					   padding:5px;
+				       border:1px solid #CCCCCC;
+				       text-align:center; 
+				       font-weight:bold; 
+				       width:99%;
+		      		}
+			#w {
+				z-index:500;
+			}
+			#videoGM{
+				margin-top: 100px;
+				margin-left: 30px;
+				float: left;
+				background:#000000;
+				position: static;
+				display: inline;
+				width: 504;
+				height: 304;
+			}
+			#footer{
+				margin-top:0px;
+				width:1024px;
+				height: 197px;
+				float: left;
+				margin-top: 40px;
+				position: static;
+				display: block;
+				background-image: url(recursos/img/chevrolette.png) !important;
+				background-repeat: no-repeat; 
+			}
+			#Antefooter{
+				margin-top:0px;
+				width:1024px;
+				height: 80px;
+				float: left;
+				margin-bottom: 0;
+				position: static;
+				display: block;
+			}
+			#divAsvDer{
+				width: 400px;
+				height: 450px;
+				float: right;
+				position: static;
+				display: block;
+			}
+			.nombre{
+				padding-top: 10px;
+				width: 430px;
+				height: 100px;
+				background-image: url(recursos/img/boton.png) !important; background-repeat: no-repeat; 
+			}
+			.nombre b{
+				color: #FFFFFF;
+				margin-top: 10px;
+				font-size: 30px;
+				text-align: center;
+			}		
+			.nombre p{
+				color: #ececec;
+				heigth: 20px;
+				margin-top: 0px;
+				font-size: 20px;
+				text-align: center;
+				
+			}
+			.retraso {
+				color: #FFFFFF;
+				heigth: 10px;
+				font-size:10px;
+				margin-top: -2px;
+				text-align: center;
+			}
+			#tablaContenido{
+				margin-top:20px;		
+			}
+			#llamado {
+				color: #FFFFFF;
+				font-size:40px;
+				font-weight:bolder;
+				text-align: center;	
+				width:404px;
+			}
+		</style>
+	</head>
+	<!-- <body style = "background-image: url('recursos/img/fondo.png')" onload='javascript: cargar();'> -->
+	<body style = "background-image:url(recursos/img/background.png); background-repeat:no-repeat" onload='javascript: cargar();'> 
+		<!--<div id="message_box"><img id="close_message" style="float:right;cursor:pointer" />The floating message goes here</div>-->
+		<div id='anteFooter'>
+			<table>
+				<tr>
+					<td>
+						<img src='recursos/img/brigutti.png'>
+					</td>
+					<td>
+						<MARQUEE  id ='noticia' height='52px' width ='870px' scrolldelay = 0 style="font-family:Arial; color:#FFF; font-weight:bolder; margin-left:-2px; margin-top:15px; padding-top:7px; FONT-SIZE: 20pt; background-image:url(recursos/img/noticias.png) !important; background-repeat: no-repeat">
+						</MARQUEE>
+					</td>				
+				</tr>
+			</table>
+		</div>
+		
+		<div id = 'videoGM'>
+			<center>
+			<div id="jp_container_1" class="jp-video jp-video-270p">
+			<div class="jp-type-playlist">
+				<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+					<!--<div class="jp-gui">
+						<div class="jp-video-play">
+							<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>
+						</div>
+						<div class="jp-interface">
+							<div class="jp-progress">
+								<div class="jp-seek-bar">
+									<div class="jp-play-bar"></div>
+								</div>
+							</div>
+							<div class="jp-current-time"></div>
+							<div class="jp-duration"></div>
+							<div class="jp-title">
+								<ul>
+									<li></li>
+								</ul>
+							</div>
+							<div class="jp-controls-holder">
+								<ul class="jp-controls">
+									<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+									<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+									<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+									<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+									<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+									<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+									<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+									<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+								</ul>
+								<div class="jp-volume-bar">
+									<div class="jp-volume-bar-value"></div>
+								</div>
+								<ul class="jp-toggles">
+									<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>
+									<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>
+									<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+									<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+									<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+									<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>-->
+					<!--<div class="jp-playlist">
+						<ul>
+							<li></li>
+						</ul>
+					</div>
+					<div class="jp-no-solution">
+						<span>Update Required</span>
+						To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+					</div>-->
+				</div>
+		</div>
+
+
+			</center>
+		</div>
+		<div id = 'divAsvDer'>
+			<table id='tablaContenido'>
+				<tr>
+					<td id = 'llamado'>
+						<center>ATENDIENDO</center>
+					</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td class='nombre'>	
+						<center><div id ='llamado0'></div></center>
+					</td>
+				</tr>
+				<tr>
+					<td class='nombre'>
+						<center><div id ='llamado1'></div></center>
+					</td>
+				</tr>
+				<tr>
+					<td class='nombre'>
+						<center><div id ='llamado2'></div></center>
+					</td>
+				</tr>
+				<tr>
+					<td class='nombre'>
+						<center><div id ='llamado3'></div></center>
+					</td>
+				</tr>
+			</table>
+		</div>	
+		<div id = 'footer'></div>
+	</body>		
+</html>
